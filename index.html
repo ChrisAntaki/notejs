@@ -13,7 +13,12 @@
         const hi = await exec(
           "EODWLRXLEFQ36BKY662AVQ4HTV3FRCLBNB7PFO2DISVLHSGMMTMA"
         );
-        hi("Hey, Null!");
+        const renderHtml = await exec(
+          "I6GUXWXGA44ZE3IJD25H4IKCFUFJQXT2QAAPN54KOHWPCNRQGLHQ"
+        );
+        const msg = "Hey, Null!";
+        renderHtml(msg);
+        hi(msg);
       })();
     </script>
   </body>
