@@ -5,24 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notejs</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
     <script src="./note.js"></script>
     <script>
       (async () => {
-        const msg = "Hey, Null!";
+        // const renderHtml = await exec(
+        //   "I6GUXWXGA44ZE3IJD25H4IKCFUFJQXT2QAAPN54KOHWPCNRQGLHQ"
+        // );
 
-        // Render HTML.
-        const renderHtml = await exec(
-          "I6GUXWXGA44ZE3IJD25H4IKCFUFJQXT2QAAPN54KOHWPCNRQGLHQ"
-        );
-        renderHtml(msg);
+        // Create canvas.
+        const canvas = document.createElement("canvas");
+        document.body.append(canvas);
 
-        // Alert.
-        const hi = await exec(
-          "EODWLRXLEFQ36BKY662AVQ4HTV3FRCLBNB7PFO2DISVLHSGMMTMA"
-        );
-        setTimeout(() => hi(msg), 420);
+        const ctx = canvas.getContext("2d");
+
+        window.onresize = function () {
+          canvas.width = Math.floor(window.innerWidth);
+          canvas.style.width = Math.floor(window.innerWidth);
+          canvas.height = Math.floor(window.innerHeight);
+          canvas.style.height = Math.floor(window.innerHeight);
+        };
+        window.onresize();
+
+        function render() {
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+          const strokes = ["#00aaff", "#00ffaa"];
+          ctx.strokeStyle = strokes[Math.floor(Math.random() * strokes.length)];
+          ctx.beginPath();
+          ctx.arc(
+            Math.random() * width,
+            Math.random() * height,
+            50,
+            0,
+            2 * Math.PI
+          );
+          ctx.stroke();
+
+          requestAnimationFrame(render);
+        }
+        render();
       })();
     </script>
   </body>
