@@ -10,15 +10,19 @@
     <script src="./note.js"></script>
     <script>
       (async () => {
-        const hi = await exec(
-          "EODWLRXLEFQ36BKY662AVQ4HTV3FRCLBNB7PFO2DISVLHSGMMTMA"
-        );
+        const msg = "Hey, Null!";
+
+        // Render HTML.
         const renderHtml = await exec(
           "I6GUXWXGA44ZE3IJD25H4IKCFUFJQXT2QAAPN54KOHWPCNRQGLHQ"
         );
-        const msg = "Hey, Null!";
         renderHtml(msg);
-        hi(msg);
+
+        // Alert.
+        const hi = await exec(
+          "EODWLRXLEFQ36BKY662AVQ4HTV3FRCLBNB7PFO2DISVLHSGMMTMA"
+        );
+        setTimeout(() => hi(msg), 420);
       })();
     </script>
   </body>
